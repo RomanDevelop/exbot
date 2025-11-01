@@ -14,7 +14,7 @@ ENV/
 .env.local
 
 # Data files
-exam_status.json
+# exam_status.json - не игнорируем, нужен для GitHub Actions
 *.log
 
 # IDE
