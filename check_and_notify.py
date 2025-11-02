@@ -3,6 +3,10 @@ import os
 import json
 import requests
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
+
+# Загружаем переменные из .env файла
+load_dotenv()
 
 CHECK_URL = os.getenv("CHECK_URL")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
