@@ -3,10 +3,14 @@ import os
 import json
 import requests
 from bs4 import BeautifulSoup
-from dotenv import load_dotenv
 
-# Загружаем переменные из .env файла
-load_dotenv()
+# Загружаем переменные из .env файла (если файл существует и dotenv установлен)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    # В GitHub Actions dotenv не нужен, переменные передаются через env:
+    pass
 
 CHECK_URL = os.getenv("CHECK_URL")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
