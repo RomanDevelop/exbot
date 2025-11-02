@@ -1,1 +1,12 @@
-{"status": "closed"}
+{
+  "urls": {
+    "https://polonicum.uw.edu.pl/pl/egzaminy-certyfikatowe/": "unknown",
+    "https://san.edu.pl/egzaminy-certyfikatowe-z-jezyka-polskiego": "unknown",
+    "https://sjo.sggw.edu.pl/egzaminy-certyfikatowe/": "unknown",
+    "https://www.sgh.waw.pl/egzamin-panstwowy-z-jezyka-polskiego": "unknown",
+    "https://irk.uksw.edu.pl/pl/offer/EGZ/": "unknown",
+    "https://www.wum.edu.pl/dla-kandydatow/egzaminy-certyfikatowe": "unknown",
+    "https://chowaniak-school.pl/page/egzamin-certyfikatowy": "open",
+    "https://certyfikatpolski.pl/rejestracja-na-egzamin/": "unknown"
+  }
+}
