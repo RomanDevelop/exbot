@@ -1,42 +1,42 @@
-name: PolExamBot scheduled check
+# name: PolExamBot scheduled check
 
-on:
-  schedule:
-    - cron: '*/30 * * * *'   # каждые 30 минут
-  workflow_dispatch:          # ручной запуск из Actions
+# on:
+#   schedule:
+#     - cron: '*/30 * * * *'   # каждые 30 минут
+#   workflow_dispatch:          # ручной запуск из Actions
 
-jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: true
+# jobs:
+#   check:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#         with:
+#           persist-credentials: true
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
+#       - name: Setup Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.11'
 
-      - name: Install deps
-        run: pip install requests beautifulsoup4
+#       - name: Install deps
+#         run: pip install requests beautifulsoup4
 
-      - name: Run check script
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          CHECK_URLS: ${{ secrets.CHECK_URLS }}
-        run: |
-          python check_and_notify.py
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "actions@github.com"
-          # если script изменил exam_status.json — закоммитим и запушим
-          if git status --porcelain | grep -q exam_status.json; then
-            git add exam_status.json
-            git commit -m "Update exam_status [ci skip]"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+#       - name: Run check script
+#         env:
+#           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+#           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+#           CHECK_URLS: ${{ secrets.CHECK_URLS }}
+#         run: |
+#           python check_and_notify.py
+#           git config --global user.name "github-actions[bot]"
+#           git config --global user.email "actions@github.com"
+#           # если script изменил exam_status.json — закоммитим и запушим
+#           if git status --porcelain | grep -q exam_status.json; then
+#             git add exam_status.json
+#             git commit -m "Update exam_status [ci skip]"
+#             git push
+#           else
+#             echo "No changes to commit."
+#           fi
 
